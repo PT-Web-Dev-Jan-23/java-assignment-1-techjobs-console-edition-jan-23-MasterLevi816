@@ -10,9 +10,10 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
+        //columnChoices is name of Hashmap
         HashMap<String, String> columnChoices = new HashMap<>();
         columnChoices.put("core competency", "Skill");
         columnChoices.put("employer", "Employer");
@@ -21,6 +22,7 @@ public class TechJobs {
         columnChoices.put("all", "All");
 
         // Top-level menu options
+        //actionChoices is name of Hashmap
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("search", "Search");
         actionChoices.put("list", "List");
@@ -112,14 +114,29 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+    // Print a list of jobs
+// Each job is a hashmap (keys: employer, location..) (value: details under each key category. IT, C#, etc)
+    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        //someJobs is the name of the ArrayList that holds a HashMap
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
+        } else {
+            //
+            for (HashMap<String, String> title : someJobs) {
+                //title now holds just a hashmap of someJobs
+                System.out.println("\n*****");
+                //make a nested for each loop to iterate over each hashmap
+                for (Map.Entry<String, String> details : title.entrySet()) {
+                    System.out.println(details.getKey() + " : " + details.getValue());
+                }
+                System.out.println("*****");
+            }
+        }
     }
 }

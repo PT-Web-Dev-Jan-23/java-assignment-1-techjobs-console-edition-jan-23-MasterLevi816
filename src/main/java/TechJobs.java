@@ -127,15 +127,17 @@ public class TechJobs {
         if (someJobs.size() == 0) {
             System.out.println("No Results");
         } else {
-            //
+            //iterate over someJobs
             for (HashMap<String, String> title : someJobs) {
                 //title now holds just a hashmap of someJobs
                 System.out.println("\n*****");
                 //make a nested for each loop to iterate over each hashmap
                 for (Map.Entry<String, String> details : title.entrySet()) {
+                    //details is iterator variable used to show key = value set
                     System.out.println(details.getKey() + " : " + details.getValue());
                 }
                 System.out.println("*****");
+
             }
         }
     }

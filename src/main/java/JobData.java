@@ -103,14 +103,18 @@ public class JobData {
 
         for (HashMap<String, String> column : allJobs) {
 
-            for (Map.Entry<String, String> row: column.entrySet()){
-                System.out.println(row.getKey() + " : " + row.getValue());
-            }
+            for (Map.Entry<String, String> row: column.entrySet()) {
+               // System.out.println(row.getKey() + " : " + row.getValue());
 
-            String aValue = column.get(value);
-
-            if (aValue.contains(value)) {
-                search.add(column);
+                //aValue holds all the job columns
+                //value holds the user input and we want the value from the rows (the specific job details), not the column (details of all jobs)
+                String aValue = row.getValue();
+                //check if aValue contains user value
+                if (aValue.toUpperCase().contains(value.toUpperCase())) {
+                    search.add(column);
+                    break;
+                    //stops the if statement after one job is added to then look for another job to add and so on
+                }
             }
         }
 

@@ -61,9 +61,11 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("\nSearch term:");
+                //setting searchTerm to get user input
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+                    //findByValue parameter is searchTerm here and in JobData the parameter is value which is a placeholder
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -125,18 +127,27 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         //someJobs is the name of the ArrayList that holds a HashMap
         if (someJobs.size() == 0) {
-            System.out.println("No Results");
+            System.out.print("No Results");
         } else {
             //iterate over someJobs
             for (HashMap<String, String> title : someJobs) {
+                String jobInfo = "*****\n";
+
                 //title now holds just a hashmap of someJobs
-                System.out.println("\n*****");
+
+                System.out.print("\n*****\n");
+
                 //make a nested for each loop to iterate over each hashmap
                 for (Map.Entry<String, String> details : title.entrySet()) {
                     //details is iterator variable used to show key = value set
+
                     System.out.println(details.getKey() + " : " + details.getValue());
+
+                    //jobInfo+=(details.getKey() + " : " + details.getValue());
+                    //+= adding the current value of the variable on the left to the value on the right and then assigning the result to the operand on the left.
                 }
                 System.out.println("*****");
+               //System.out.print(jobInfo + '\n');
 
             }
         }

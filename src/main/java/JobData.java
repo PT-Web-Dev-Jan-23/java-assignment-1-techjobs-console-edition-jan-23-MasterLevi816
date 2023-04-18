@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -19,6 +16,7 @@ public class JobData {
     private static boolean isDataLoaded = false;
 
     private static ArrayList<HashMap<String, String>> allJobs;
+
 
     /**
      * Fetch list of all values from loaded data,
@@ -94,12 +92,33 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
+        //findbyvalue is holding one arraylist that holds multiple hashmaps
+        //allJobs from above is an arraylist that holds hashmap objects with string keys/values
 
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> search = new ArrayList<>();
+        //search object holds an arraylist that holds a hashmap
+
+        for (HashMap<String, String> column : allJobs) {
+
+            for (Map.Entry<String, String> row: column.entrySet()) {
+               // System.out.println(row.getKey() + " : " + row.getValue());
+
+                //aValue holds all the job columns
+                //value holds the user input and we want the value from the rows (the specific job details), not the column (details of all jobs)
+                String aValue = row.getValue();
+                //check if aValue contains user value
+                if (aValue.toUpperCase().contains(value.toUpperCase())) {
+                    search.add(column);
+                    break;
+                    //stops the if statement after one job is added to then look for another job to add and so on
+                }
+            }
+        }
+
+        return search;
     }
 
     /**

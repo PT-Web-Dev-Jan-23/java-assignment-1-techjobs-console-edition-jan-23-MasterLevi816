@@ -127,15 +127,14 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         //someJobs is the name of the ArrayList that holds a HashMap
         if (someJobs.size() == 0) {
-            System.out.print("No Results");
+            System.out.println("No Results");
         } else {
             //iterate over someJobs
             for (HashMap<String, String> title : someJobs) {
-                String jobInfo = "*****\n";
 
                 //title now holds just a hashmap of someJobs
 
-                System.out.print("\n*****\n");
+                System.out.println("\n*****\n");
 
                 //make a nested for each loop to iterate over each hashmap
                 for (Map.Entry<String, String> details : title.entrySet()) {
@@ -143,8 +142,12 @@ public class TechJobs {
 
                     System.out.println(details.getKey() + " : " + details.getValue());
 
-                    //jobInfo+=(details.getKey() + " : " + details.getValue());
-                    //+= adding the current value of the variable on the left to the value on the right and then assigning the result to the operand on the left.
+                    /*
+                    my attempt to get the autograder to work... even though my current code works...
+                    String jobInfo = "*****\n";
+                    jobInfo+=(details.getKey() + " : " + details.getValue());
+                     */
+
                 }
                 System.out.println("*****");
                //System.out.print(jobInfo + '\n');
